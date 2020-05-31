@@ -1,7 +1,6 @@
 package com.peak.eshop.price.service.impl;
 
-import com.alibaba.druid.support.json.JSONUtils;
-import com.fasterxml.jackson.databind.util.JSONPObject;
+import com.alibaba.fastjson.JSONObject;
 import com.peak.eshop.price.mapper.ProductPriceMapper;
 import com.peak.eshop.price.model.ProductPrice;
 import com.peak.eshop.price.service.ProductPriceService;
@@ -20,12 +19,12 @@ public class ProductPriceServiceImpl implements ProductPriceService {
 
 	public void add(ProductPrice productPrice) {
 		productPriceMapper.add(productPrice);
-		redisUtil.set("product_price_" +  productPrice.getId(), JSONUtils.toJSONString(productPrice));
-	}
+		redisUtil.set("product_price_" +  productPrice.getId(), JSONObject.toJSONString(productPrice));
+}
 
 	public void update(ProductPrice productPrice) {
 		productPriceMapper.update(productPrice);
-		redisUtil.set("product_price_" +  productPrice.getId(), JSONUtils.toJSONString(productPrice));
+		redisUtil.set("product_price_" +  productPrice.getId(), JSONObject.toJSONString(productPrice));
 	}
 
 	public void delete(Long id) {
@@ -35,6 +34,11 @@ public class ProductPriceServiceImpl implements ProductPriceService {
 
 	public ProductPrice findById(Long id) {
 		return productPriceMapper.findById(id);
+	}
+
+	@Override
+	public ProductPrice findByProductId(Long productId) {
+		return productPriceMapper.findByProductId(productId);
 	}
 
 }

@@ -1,15 +1,16 @@
-package com.peak.eshop.price;
+package com.peak.eshop.turbine;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration;
 import org.springframework.cloud.netflix.eureka.EnableEurekaClient;
+import org.springframework.cloud.netflix.turbine.EnableTurbine;
 
 @SpringBootApplication
 @EnableEurekaClient
-public class EshopPriceApplication {
+@EnableTurbine
+public class HystrixTurbineApplication {
 
     public static void main(String[] args) {
-        SpringApplication.run(EshopPriceApplication.class, args);
+        SpringApplication.run(HystrixTurbineApplication.class, args);
     }
 }

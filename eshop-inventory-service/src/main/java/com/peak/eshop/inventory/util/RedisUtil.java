@@ -3,6 +3,8 @@ package com.peak.eshop.inventory.util;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.RedisTemplate;
+import org.springframework.data.redis.serializer.RedisSerializer;
+import org.springframework.data.redis.serializer.StringRedisSerializer;
 import org.springframework.stereotype.Component;
 import org.springframework.util.CollectionUtils;
 
@@ -10,8 +12,18 @@ import org.springframework.util.CollectionUtils;
 @Slf4j
 public class RedisUtil {
 
-    @Autowired
     private RedisTemplate redisTemplate;
+
+    @Autowired(required = false)
+    public void setRedisTemplate(RedisTemplate redisTemplate) {
+        RedisSerializer stringRedisSerializer = new StringRedisSerializer();
+        redisTemplate.setKeySerializer(stringRedisSerializer);
+        redisTemplate.setValueSerializer(stringRedisSerializer);
+        redisTemplate.setHashKeySerializer(stringRedisSerializer);
+        redisTemplate.setHashValueSerializer(stringRedisSerializer);
+        this.redisTemplate = redisTemplate;
+        this.redisTemplate = redisTemplate;
+    }
 
     /**
      * 删除缓存

@@ -11,6 +11,8 @@
         <module>eshop-datasync-service</module>
         <module>eshop-dataaggr-service</module>
         <module>eshop-datalink-service</module>
+        <module>eshop-one-service</module>
+        <module>hystrix-turbine-server</module>
     </modules>
     <parent>
         <groupId>org.springframework.boot</groupId>

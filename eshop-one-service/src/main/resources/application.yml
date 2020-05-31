@@ -4,16 +4,18 @@ eureka:
       defaultZone: http://localhost:8761/eureka/
 
 server:
-  port: 8765
+  port: 8768
 
 spring:
   application:
-    name: eshop-price-service
+    name: eshop-one-service
   datasource:
     type: com.alibaba.druid.pool.DruidDataSource
     platform: mysql
     url: jdbc:mysql://192.168.1.201:3306/eshop
     username: peak
     password: peak
-    redis:
-      host: 192.168.1.201
+
+feign:
+  hystrix:
+    enabled: true
